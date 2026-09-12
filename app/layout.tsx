@@ -6,5 +6,5 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.svg" },
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="zh-CN"><body>{children}</body></html>;
+  return <html lang="zh-CN" className="dark"><body>{children}</body></html>;
 }
