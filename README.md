@@ -4,6 +4,17 @@
 
 [打开网站](https://pk.k1true.chatgpt.site) · [源码仓库](https://github.com/K1True-1/pianke-personal-space)
 
+## 更新记录
+
+### 2026-09-13 · 动态画廊改版
+
+- **首页布局**：改为摄影画廊，左侧展示简介和个人统计，右侧为主图，下方为作品列表；加入衬线标题、暖白文字与香槟色细节。
+- **全新背景**：替换为「雾中旷野与孤树」图片，保留银灰质感，突出开阔、安静的氛围；手机端按孤树位置调整背景取景。
+- **持续动态与光影**：加入背景运镜、照片推近、鼠标视差与倾斜、跟随高光、按钮反光及内容入场动画。页面不提供动效开关；切到后台或照片离开视口时暂停相应动画。
+- **浏览与阅读交互**：照片详情支持上一张、下一张、方向键切换及 Escape 关闭；完善对话框焦点返回、代码复制反馈和手机阅读区域。
+- **本地素材**：更新为三张 AI 生成的展示样片，加入本地衬线字体；背景提示词、素材说明与字体授权文件随源码保存。
+- **验证记录**：生产构建与本地页面、背景资源加载检查通过；各轮验证记录及当前浏览器画面复核的连接限制见 [design-qa.md](design-qa.md)。
+
 ## 功能介绍
 
 | 功能 | 可以做什么 |
@@ -46,7 +57,7 @@
 
 ### 浏览、阅读与下载
 
-- **照片**：点击缩略图打开详情；「下载原文件」下载未经压缩的原图。预览图只用于浏览，不替换原文件。
+- **照片**：点击缩略图打开详情，使用上一张、下一张或键盘方向键切换，按 Escape 关闭；「下载原文件」下载未经压缩的原图。预览图只用于浏览，不替换原文件。
 - **代码**：点击文件卡片查看文本；「复制本段」复制当前显示的内容。较大的文件通过「上一段」「下一段」浏览。ZIP 需要下载后解压查看。
 - **小说**：点击书架上的作品开始阅读，用「上一段」「下一段」浏览后续内容。Markdown 当前作为纯文本展示。
 - **删除**：在详情中点击「删除」并确认。删除无法撤销，请先下载需要保留的原文件。
@@ -63,9 +74,9 @@
 
 ## 常见问题
 
-**为什么第一次打开会看到两张样片？**
+**为什么第一次打开会看到三张样片？**
 
-空相册会展示两张注明摄影师和来源的 Unsplash 样片。上传自己的第一张照片后，样片会自动让位；它们不会计入你的作品数量。
+空相册会展示三张注明 AI 生成的风景样片。上传自己的第一张照片后，样片会自动让位；它们不会计入你的作品数量。
 
 **上传后看不到作品怎么办？**
 
@@ -130,7 +141,7 @@ components/ui/          界面组件
 db/                     数据库结构与访问辅助函数
 drizzle/                数据库迁移及结构快照
 lib/                    上传、分段阅读与存储辅助逻辑
-public/                 图标及展示样片
+public/                 图标、背景图片、展示样片及本地字体
 .openai/hosting.json     Sites 项目关联及 DB / BUCKET 逻辑绑定
 ```
 
@@ -150,8 +161,10 @@ public/                 图标及展示样片
 
 这些是后续方向，尚未作为现有功能实现。
 
-## 图片与组件来源
+## 图片、字体与组件来源
 
-- 海岸展示样片：[Engin Akyurt / Unsplash](https://unsplash.com/it/foto/costa-rocciosa-con-oceano-calmo-sotto-cielo-nuvoloso-LdSnZwPutjY)
-- 建筑展示样片：[Declan Sun / Unsplash](https://unsplash.com/photos/modern-building-with-curved-facade-framed-by-trees-HW9PmuGve-M)
+- 当前背景与三张风景样片使用内置 Image Gen 生成。当前背景的生成提示词及制作说明见 [雾中旷野与孤树](public/backgrounds/quiet-meadow.md)，历次背景文件保留在 `public/backgrounds/` 中。
+- 本地衬线字体及许可见 [字体说明](public/fonts/README.md) 与 [OFL.txt](public/fonts/OFL.txt)。
+- 旧版保留的海岸样片：[Engin Akyurt / Unsplash](https://unsplash.com/it/foto/costa-rocciosa-con-oceano-calmo-sotto-cielo-nuvoloso-LdSnZwPutjY)。
+- 旧版保留的建筑样片：[Declan Sun / Unsplash](https://unsplash.com/photos/modern-building-with-curved-facade-framed-by-trees-HW9PmuGve-M)。
 - 组件与构建工具的第三方许可保留在 `vendor/`、`build/` 等相应目录中。
